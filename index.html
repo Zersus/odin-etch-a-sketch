@@ -40,6 +40,14 @@
                     rows.style.border = '2px solid black';
 
                     columns.appendChild(rows);
+
+                    rows.addEventListener('mouseenter', () => {
+                        rows.style.backgroundColor = 'black';
+                    })
+
+                    rows.addEventListener('mouseout', () => {
+                        rows.style.backgroundColor = 'white';
+                    })
                 }
             }
         </script>
