@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Javascript Etch-a-Sketch</title>
+        <link rel="stylesheet" href="/">
+    </head>
+
+    <body>
+
+        <script>
+
+            const body = document.querySelector('body');
+            /*body.style.border = '5px solid black';*/
+            body.style.justifyContent = 'center';
+
+            const container = document.createElement('div');
+            container.classList.add("container");
+            /*container.style.border = '5px solid black';*/
+            container.style.width = 'auto';
+            container.style.height = 'auto';
+            container.style.display = 'flex';
+            container.style.flexDirection = 'row';
+            container.style.justifyContent = 'center';
+
+            body.appendChild(container);
+
+            for(let i = 0; i < 16; i++){
+                
+                const columns = document.createElement('div');
+                columns.classList.add("columns");
+
+                container.appendChild(columns);
+
+                for(let i = 0; i < 16; i++){
+                    const rows = document.createElement('div');
+                    rows.classList.add("rows");
+                    rows.style.width = '32px';
+                    rows.style.height = '32px';
+                    rows.style.border = '2px solid black';
+
+                    columns.appendChild(rows);
+                }
+            }
+        </script>
+
+    </body>
+</html>
