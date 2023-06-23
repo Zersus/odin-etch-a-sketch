@@ -62,47 +62,52 @@
                 const grid = prompt("Select the amount of squares");
                 const gridInt = parseInt(grid, 10);
 
-                container.innerHTML = '';
+                if(gridInt <= 100){
+                    container.innerHTML = '';
 
-                const newContainer = document.createElement('div');
-                newContainer.classList.add("new-container");
-                /*newContainer.style.border = '5px solid black';*/
-                newContainer.style.width = 'auto';
-                newContainer.style.height = '550px';
-                newContainer.style.display = 'flex';
-                newContainer.style.flexDirection = 'row';
-                newContainer.style.justifyContent = 'center';
+                    const newContainer = document.createElement('div');
+                    newContainer.classList.add("new-container");
+                    /*newContainer.style.border = '5px solid black';*/
+                    newContainer.style.width = 'auto';
+                    newContainer.style.height = '550px';
+                    newContainer.style.display = 'flex';
+                    newContainer.style.flexDirection = 'row';
+                    newContainer.style.justifyContent = 'center';
 
-                const heightInt = parseInt(newContainer.style.height, 10);
-                const newGrid = heightInt / gridInt;
+                    const heightInt = parseInt(newContainer.style.height, 10);
+                    const newGrid = heightInt / gridInt;
 
-                container.appendChild(newContainer);
-
-                for(let i = 0; i < gridInt; i++){
-                    const newColumns = document.createElement('div');
-                    newColumns.classList.add("new-columns");
-
-                    newContainer.appendChild(newColumns);
+                    container.appendChild(newContainer);
 
                     for(let i = 0; i < gridInt; i++){
-                        const newRows = document.createElement('div');
-                        newRows.classList.add("new-rows");
-                        newRows.style.boxSizing = 'border-box';
-                        newRows.style.width = newGrid+'px';
-                        newRows.style.height = newGrid+'px';
-                        newRows.style.border = '1px solid black';
+                        const newColumns = document.createElement('div');
+                        newColumns.classList.add("new-columns");
 
-                        newColumns.appendChild(newRows);
+                        newContainer.appendChild(newColumns);
 
-                        newRows.addEventListener('mouseenter', () => {
-                            newRows.style.backgroundColor = 'black';
-                        })
+                        for(let i = 0; i < gridInt; i++){
+                            const newRows = document.createElement('div');
+                            newRows.classList.add("new-rows");
+                            newRows.style.boxSizing = 'border-box';
+                            newRows.style.width = newGrid+'px';
+                            newRows.style.height = newGrid+'px';
+                            newRows.style.border = '1px solid black';
 
-                        newRows.addEventListener('mouseout', () => {
-                            newRows.style.backgroundColor = 'white';
-                        })
+                            newColumns.appendChild(newRows);
+
+                            newRows.addEventListener('mouseenter', () => {
+                                newRows.style.backgroundColor = 'black';
+                            })
+
+                            newRows.addEventListener('mouseout', () => {
+                                newRows.style.backgroundColor = 'white';
+                            })
+                        }
                     }
                 }
+                else if(gridInt > 100){
+                    alert("The entered value exceeds the allowed amount of squares (maximum:100)");
+                } 
             }
 
             button.addEventListener('click', () => {
