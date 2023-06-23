@@ -13,12 +13,18 @@
             const body = document.querySelector('body');
             /*body.style.border = '5px solid black';*/
             body.style.justifyContent = 'center';
+            
+            const button = document.createElement('button');
+            button.classList.add("button");
+            button.textContent = "Click Me";
+
+            body.appendChild(button);
 
             const container = document.createElement('div');
             container.classList.add("container");
-            /*container.style.border = '5px solid black';*/
+            container.style.border = '5px solid black';
             container.style.width = 'auto';
-            container.style.height = 'auto';
+            container.style.height = '550px';
             container.style.display = 'flex';
             container.style.flexDirection = 'row';
             container.style.justifyContent = 'center';
@@ -37,7 +43,7 @@
                     rows.classList.add("rows");
                     rows.style.width = '32px';
                     rows.style.height = '32px';
-                    rows.style.border = '2px solid black';
+                    rows.style.border = '1px solid black';
 
                     columns.appendChild(rows);
 
@@ -50,6 +56,60 @@
                     })
                 }
             }
+
+            function changeGrid(){
+
+                const grid = prompt("Select the amount of squares");
+                const gridInt = parseInt(grid, 10);
+
+                container.innerHTML = '';
+
+                const newContainer = document.createElement('div');
+                newContainer.classList.add("new-container");
+                /*newContainer.style.border = '5px solid black';*/
+                newContainer.style.width = 'auto';
+                newContainer.style.height = '550px';
+                newContainer.style.display = 'flex';
+                newContainer.style.flexDirection = 'row';
+                newContainer.style.justifyContent = 'center';
+
+                const heightInt = parseInt(newContainer.style.height, 10);
+                const newGrid = heightInt / gridInt;
+
+                container.appendChild(newContainer);
+
+                for(let i = 0; i < gridInt; i++){
+                    const newColumns = document.createElement('div');
+                    newColumns.classList.add("new-columns");
+
+                    newContainer.appendChild(newColumns);
+
+                    for(let i = 0; i < gridInt; i++){
+                        const newRows = document.createElement('div');
+                        newRows.classList.add("new-rows");
+                        newRows.style.boxSizing = 'border-box';
+                        newRows.style.width = newGrid+'px';
+                        newRows.style.height = newGrid+'px';
+                        newRows.style.border = '1px solid black';
+
+                        newColumns.appendChild(newRows);
+
+                        newRows.addEventListener('mouseenter', () => {
+                            newRows.style.backgroundColor = 'black';
+                        })
+
+                        newRows.addEventListener('mouseout', () => {
+                            newRows.style.backgroundColor = 'white';
+                        })
+                    }
+                }
+            }
+
+            button.addEventListener('click', () => {
+
+                changeGrid();
+            })
+
         </script>
 
     </body>
