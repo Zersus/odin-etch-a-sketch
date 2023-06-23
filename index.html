@@ -48,12 +48,14 @@
                     columns.appendChild(rows);
 
                     rows.addEventListener('mouseenter', () => {
-                        rows.style.backgroundColor = 'black';
+                        let randomColor = Math.floor(Math.random()*0xFFFFFF).toString(16);
+
+                        rows.style.backgroundColor = '#' + randomColor;
                     })
 
-                    rows.addEventListener('mouseout', () => {
+                    /*rows.addEventListener('mouseout', () => {
                         rows.style.backgroundColor = 'white';
-                    })
+                    })*/
                 }
             }
 
@@ -89,19 +91,21 @@
                             const newRows = document.createElement('div');
                             newRows.classList.add("new-rows");
                             newRows.style.boxSizing = 'border-box';
-                            newRows.style.width = newGrid+'px';
-                            newRows.style.height = newGrid+'px';
+                            newRows.style.width = newGrid + 'px';
+                            newRows.style.height = newGrid + 'px';
                             newRows.style.border = '1px solid black';
 
                             newColumns.appendChild(newRows);
 
                             newRows.addEventListener('mouseenter', () => {
-                                newRows.style.backgroundColor = 'black';
+                                let randomColor = Math.floor(Math.random()*0xFFFFFF).toString(16);
+
+                                newRows.style.backgroundColor = '#' + randomColor;
                             })
 
-                            newRows.addEventListener('mouseout', () => {
+                            /*newRows.addEventListener('mouseout', () => {
                                 newRows.style.backgroundColor = 'white';
-                            })
+                            })*/
                         }
                     }
                 }
